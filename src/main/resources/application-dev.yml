@@ -1,0 +1,17 @@
+server:
+  port: ${PORT:8081}
+  forward-headers-strategy: native
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      uri: ${MONGO_URI:mongodb://root:root@localhost/PayKitDB?retryWrites=true&w=majority&serverSelectionTimeoutMS=200000000&connectTimeoutMS=200000000&serverTimezone=UTC}
+
+
+database-name: ${DB_NAME:PayKitDB}
+
+logging:
+  file:
+    name: logs

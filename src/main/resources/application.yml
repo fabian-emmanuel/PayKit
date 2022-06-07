@@ -1,0 +1,20 @@
+server:
+  port: ${PORT:************}
+  forward-headers-strategy: native
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    mongodb:
+      uri: ${MONGO_URI:**************}
+  profiles:
+    active: dev
+
+
+database-name: ${DB_NAME:**************}
+
+
+logging:
+  file:
+    name: logs

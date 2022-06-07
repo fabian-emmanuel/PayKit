@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PayKitApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PayKitApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PayKitApplication.class, args);
+    }
 
 }

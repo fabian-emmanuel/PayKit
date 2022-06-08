@@ -3,7 +3,7 @@ package com.codewithfibbee.paykit.exceptions;
 
 import com.codewithfibbee.paykit.enumtypes.EntityType;
 import com.codewithfibbee.paykit.enumtypes.ExceptionType;
-import com.kingsaffiliate.app.utils.ErrorMsgUtils;
+import com.codewithfibbee.paykit.utils.ErrorMsgUtils;
 
 public class ResourceNotFoundException extends RuntimeException {
 

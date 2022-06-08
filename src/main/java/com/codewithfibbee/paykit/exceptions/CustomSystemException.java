@@ -1,10 +1,12 @@
 package com.codewithfibbee.paykit.exceptions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public class CustomSystemException extends RuntimeException{
 

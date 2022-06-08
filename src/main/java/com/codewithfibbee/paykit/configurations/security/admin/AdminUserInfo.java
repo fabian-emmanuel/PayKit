@@ -1,11 +1,11 @@
 package com.codewithfibbee.paykit.configurations.security.admin;
 
 
-import com.kingsaffiliate.app.constants.Constants;
-import com.kingsaffiliate.app.models.users.UserStatus;
-import com.kingsaffiliate.app.models.users.admin.AdminUser;
-import com.kingsaffiliate.app.models.users.roles.Role;
-import com.kingsaffiliate.app.security.BaseUserInfo;
+import com.codewithfibbee.paykit.configurations.security.BaseUserInfo;
+import com.codewithfibbee.paykit.constants.Constants;
+import com.codewithfibbee.paykit.enumtypes.UserStatus;
+import com.codewithfibbee.paykit.models.users.admin.AdminUser;
+import com.codewithfibbee.paykit.models.users.roles.Role;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -39,7 +39,7 @@ public class AdminUserInfo extends BaseUserInfo {
         return user.getEmail();
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return user.getId();
     }
 

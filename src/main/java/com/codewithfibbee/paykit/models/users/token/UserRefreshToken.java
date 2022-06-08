@@ -4,10 +4,8 @@ package com.codewithfibbee.paykit.models.users.token;
 import com.codewithfibbee.paykit.models.common.audit.AuditListener;
 import com.codewithfibbee.paykit.models.common.audit.AuditSection;
 import com.codewithfibbee.paykit.models.common.audit.Auditable;
-import com.codewithfibbee.paykit.models.common.generics.BaseEntity;
 import com.codewithfibbee.paykit.utils.CommonUtils;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -20,14 +18,13 @@ import java.util.Date;
 import static com.codewithfibbee.paykit.utils.CustomDateUtils.now;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 @EntityListeners(AuditListener.class)
-public class UserRefreshToken extends BaseEntity<String, UserRefreshToken> implements Auditable {
+public class UserRefreshToken implements Auditable {
 
     public static final int EXPIRATION = 60 * 24;
 
     @Id
-    private String _id;
+    private String id;
 
     @NotNull
     private String token;

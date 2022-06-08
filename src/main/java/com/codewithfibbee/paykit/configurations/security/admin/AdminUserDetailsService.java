@@ -1,16 +1,13 @@
 package com.codewithfibbee.paykit.configurations.security.admin;
 
 
-import com.kingsaffiliate.app.exceptions.CustomException;
-import com.kingsaffiliate.app.models.users.UserStatus;
-import com.kingsaffiliate.app.models.users.admin.AdminUser;
-import com.kingsaffiliate.app.models.users.roles.Role;
-import com.kingsaffiliate.app.repositories.user.AdminUserRepository;
-import com.kingsaffiliate.app.services.user.admin.AdminUserService;
-import com.kingsaffiliate.app.services.user.role.RoleService;
-import lombok.NoArgsConstructor;
+import com.codewithfibbee.paykit.enumtypes.UserStatus;
+import com.codewithfibbee.paykit.models.users.admin.AdminUser;
+import com.codewithfibbee.paykit.models.users.roles.Role;
+import com.codewithfibbee.paykit.repositories.user.AdminUserRepository;
+import com.codewithfibbee.paykit.services.user.admin.AdminUserService;
+import com.codewithfibbee.paykit.services.user.admin.RoleService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.service.spi.ServiceException;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,23 +15,24 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import static com.kingsaffiliate.app.constants.Constants.*;
-import static com.kingsaffiliate.app.constants.SchemaConstant.DEFAULT_SUPER_ADMINISTRATOR_DEFAULT_PASS;
-import static com.kingsaffiliate.app.constants.SchemaConstant.DEFAULT_SUPER_ADMINISTRATOR_EMAIL;
+import static com.codewithfibbee.paykit.constants.Constants.ROLE_SUPER_ADMIN;
+import static com.codewithfibbee.paykit.constants.SchemaConstant.DEFAULT_SUPER_ADMINISTRATOR_DEFAULT_PASS;
+import static com.codewithfibbee.paykit.constants.SchemaConstant.DEFAULT_SUPER_ADMINISTRATOR_EMAIL;
+import static com.codewithfibbee.paykit.exceptions.CustomMadeException.*;
 
 
 /**
  *
  */
-@NoArgsConstructor
+//@NoArgsConstructor
 @RequiredArgsConstructor
-@Component("adminUserDetailsService")
+@Component
 public class AdminUserDetailsService implements UserDetailsService {
 
     private final AdminUserRepository userRepository;
     private final AdminUserService adminUserService;
     private final PasswordEncoder passwordEncoder;
-    private final RoleService roleService;
+    private final  RoleService roleService;
 
     @Override
     @Cacheable("adminUserAuthInfo")
@@ -44,11 +42,11 @@ public class AdminUserDetailsService implements UserDetailsService {
         return new AdminUserInfo(user);
     }
 
-    public void createDefaultAdmin() throws ServiceException {
+    public void createDefaultAdmin()  {
         if (this.adminUserService.findUserByEmail(DEFAULT_SUPER_ADMINISTRATOR_EMAIL).isEmpty()) {
             AdminUser user = new AdminUser();
             String password = passwordEncoder.encode(DEFAULT_SUPER_ADMINISTRATOR_DEFAULT_PASS);
-            Role role = roleService.fetchByRoleKey(ROLE_SUPER_ADMIN).orElseThrow(() -> new CustomException.EntityNotFoundException("Resource not found for role with key:" + ROLE_SUPER_ADMIN));
+            Role role = roleService.fetchByRoleKey(ROLE_SUPER_ADMIN).orElseThrow(() -> new EntityNotFoundException("Resource not found for role with key:" + ROLE_SUPER_ADMIN));
             //creation of the super admin admin:password)
             user.setFirstName("Administrator");
             user.setLastName("SuperAdmin");

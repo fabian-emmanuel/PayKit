@@ -3,15 +3,12 @@ package com.codewithfibbee.paykit.models.users;
 
 import com.codewithfibbee.paykit.models.common.audit.AuditSection;
 import com.codewithfibbee.paykit.models.common.audit.Auditable;
-import com.codewithfibbee.paykit.models.common.generics.BaseEntity;
 import com.codewithfibbee.paykit.enumtypes.UserStatus;
 import com.codewithfibbee.paykit.enumtypes.UserType;
 import com.codewithfibbee.paykit.utils.CommonUtils;
 import com.codewithfibbee.paykit.utils.CustomDateUtils;
 import lombok.*;
 import org.apache.commons.lang3.time.DateUtils;
-import org.hibernate.Hibernate;
-import org.hibernate.annotations.Where;
 import org.springframework.boot.actuate.audit.listener.AuditListener;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -25,12 +22,10 @@ import static com.codewithfibbee.paykit.constants.SchemaConstant.DEFAULT_PWRD_SE
 
 
 @EntityListeners(AuditListener.class)
-@EqualsAndHashCode(callSuper = true)
 @Data
-@Where(clause = "deleted='0'")
-public abstract class User extends BaseEntity<String, User> implements Auditable {
+public abstract class User  implements Auditable {
     @Id
-    private String _id;
+    private String id;
 
     @Field(name = "first_name")
     private String firstName;

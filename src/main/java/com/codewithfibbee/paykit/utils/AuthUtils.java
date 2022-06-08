@@ -27,7 +27,7 @@ public class AuthUtils {
 
     public static LoginResponseDto createLoginResponse(User user, String token) {
         UserDto userDto;
-        userDto=new UserDto(user.get_id(), user.getFirstName(), user.getLastName(), user.getEmail());
+        userDto=new UserDto(user.getId(), user.getFirstName(), user.getLastName(), user.getEmail());
         return new LoginResponseDto(userDto, token);
     }
 

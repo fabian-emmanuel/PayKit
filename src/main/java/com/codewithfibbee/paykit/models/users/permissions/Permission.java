@@ -4,13 +4,10 @@ package com.codewithfibbee.paykit.models.users.permissions;
 import com.codewithfibbee.paykit.models.common.audit.AuditListener;
 import com.codewithfibbee.paykit.models.common.audit.AuditSection;
 import com.codewithfibbee.paykit.models.common.audit.Auditable;
-import com.codewithfibbee.paykit.models.common.generics.BaseEntity;
 import com.codewithfibbee.paykit.enumtypes.PermissionType;
 import com.codewithfibbee.paykit.models.users.roles.Role;
 
 import lombok.*;
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -22,16 +19,13 @@ import static com.codewithfibbee.paykit.constants.SchemaConstant.TABLE_PERMISSIO
 
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(AuditListener.class)
-
-@Where(clause = "deleted='0'")
 @Document(collection= TABLE_PERMISSION)
-public class Permission extends BaseEntity<String, Permission> implements Auditable {
+public class Permission implements Auditable {
     @Id
-    private String _id;
+    private String id;
 
     private String permission;
 

@@ -11,14 +11,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Embeddable
-//@Getter
-//@Setter
-//@NoArgsConstructor
 @Data
 public class AuditSection implements Serializable {
-//    @Serial
-//    private static final long serialVersionUID = -1934446958975060889L;
-
     @CreatedDate
     @Field(name = "date_created")
     private Date dateCreated;
@@ -28,7 +22,7 @@ public class AuditSection implements Serializable {
     private Date dateModified;
 
     @Field(name = "modified_by")
-    private Long modifiedBy;
+    private String modifiedBy;
 
     @Field(name="deleted")
     private String delF="0";

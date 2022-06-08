@@ -7,10 +7,17 @@ spring:
     allow-bean-definition-overriding: true
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb://root:root@localhost/PayKitDB?retryWrites=true&w=majority&serverSelectionTimeoutMS=200000000&connectTimeoutMS=200000000&serverTimezone=UTC}
+      uri: ${MONGO_URI:mongodb://root:root@localhost/PayKitDB?retryWrites=true&w=majority&serverSelectionTimeoutMS=200000000&connectTimeoutMS=200000000}
 
 
 database-name: ${DB_NAME:PayKitDB}
+
+jwt:
+  authorities:
+    key: roles
+  token:
+    secret-key: ${JWT_SECRET:1xvrtrt56}
+    expire-length: ${JWT_EXPIRE_LENGTH:86400000}
 
 logging:
   file:

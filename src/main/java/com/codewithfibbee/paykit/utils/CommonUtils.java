@@ -2,7 +2,6 @@ package com.codewithfibbee.paykit.utils;
 
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -23,10 +22,6 @@ public class CommonUtils {
             return false;
         }
         return true;
-    }
-
-    public static boolean isValidEmail(String email) {
-        return EmailValidator.getInstance().isValid(email);
     }
 
     public static String generatePassword() {

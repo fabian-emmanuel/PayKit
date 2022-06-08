@@ -6,9 +6,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class ListingDto {
-    protected Long id;
+    protected String id;
     protected String name;
-    public ListingDto(Long id, String name) {
+    public ListingDto(String id, String name) {
         this.id = id;
         this.name=name;
     }

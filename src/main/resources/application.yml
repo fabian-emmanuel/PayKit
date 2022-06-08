@@ -22,10 +22,6 @@ logging:
 api:
   module-name: PayKit
   version: 1.0
-
-  jwt:
-    authorities:
-      key: roles
-    token:
-      secret-key: ${JWT_SECRET:1xvrtrt56}
-      expire-length: ${JWT_EXPIRE_LENGTH:86400000}
+  url-domain: ${APP_URL_DOMAIN:http://localhost:${server.port}${server.servlet.context-path}}
+  basepath: /api/v1
+  basepath-admin: ${api.basepath}/admin

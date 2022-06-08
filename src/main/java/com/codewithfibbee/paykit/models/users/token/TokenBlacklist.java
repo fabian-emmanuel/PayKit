@@ -11,6 +11,6 @@ import static com.codewithfibbee.paykit.constants.SchemaConstant.TABLE_TOKEN_BLA
 @Document(collection = TABLE_TOKEN_BLACKLIST)
 public class TokenBlacklist {
     @Id
-    private String _id;
+    private String id;
     private String token;
 }

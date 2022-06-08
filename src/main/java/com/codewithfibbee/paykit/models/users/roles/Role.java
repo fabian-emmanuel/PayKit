@@ -4,7 +4,6 @@ package com.codewithfibbee.paykit.models.users.roles;
 import com.codewithfibbee.paykit.models.common.audit.AuditListener;
 import com.codewithfibbee.paykit.models.common.audit.AuditSection;
 import com.codewithfibbee.paykit.models.common.audit.Auditable;
-import com.codewithfibbee.paykit.models.common.generics.BaseEntity;
 import com.codewithfibbee.paykit.enumtypes.RoleType;
 import com.codewithfibbee.paykit.models.users.admin.AdminUser;
 import com.codewithfibbee.paykit.models.users.permissions.Permission;
@@ -22,21 +21,18 @@ import static com.codewithfibbee.paykit.constants.SchemaConstant.TABLE_ROLE;
 
 
 @Data
-@EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(AuditListener.class)
-//@Where(clause = "deleted='0'")
 @Document(collection= TABLE_ROLE)
 public class Role implements Auditable {
     @Id
-    private String _id;
+    private String id;
 
-    @Column(length=100)
     private String name;
     private String description;
 
-    @Column(length = 30)//TODO: should be unique, but setting it here makes tests fail for now when calling AdminUserDetail.getLoggedinToken()
+    @Field("role_key")
     private String roleKey;
 
     @Enumerated(EnumType.STRING)

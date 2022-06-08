@@ -2,6 +2,7 @@ package com.codewithfibbee.paykit.services.auth.tokenblacklist;
 
 import com.codewithfibbee.paykit.configurations.security.AuthTokenProvider;
 import com.codewithfibbee.paykit.models.users.token.TokenBlacklist;
+import com.codewithfibbee.paykit.repositories.token.TokenBlacklistRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
